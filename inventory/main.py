@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware 
 from redis_om import get_redis_connection,HashModel
-import redis
 
 
 app = FastAPI()
@@ -12,15 +11,6 @@ app.add_middleware(
     allow_methods = ['*'],
     allow_headers = ['*']
 )
-
-
-# r = redis.Redis(host="redis-14262.c305.ap-south-1-1.ec2.cloud.redislabs.com:14262",
-#     port=14262,
-#     password="Hybjimmu8vQad2LyhFeapT6RCyXul8N7",
-#     decode_responses=True)
-
-# r.set('hello', 'world')
-# print(r.get('hello'))
 
 redis = get_redis_connection(
     host="redis-14262.c305.ap-south-1-1.ec2.cloud.redislabs.com",
